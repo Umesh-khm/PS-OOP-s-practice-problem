@@ -1,0 +1,60 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "build current cpp (ucrt64)",
+			"type": "shell",
+			"command": "C:\\msys64\\ucrt64\\bin\\g++.exe",
+			"args": [
+				"-std=c++17",
+				"${file}",
+				"-o",
+				"${fileDirname}\\\\${fileBasenameNoExtension}.exe"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build current cpp (bash log)",
+			"type": "shell",
+			"command": "C:\\msys64\\usr\\bin\\bash.exe",
+			"args": [
+				"-lc",
+				{
+					"label": "build current cpp (shell=bash)",
+					"type": "shell",
+					"command": "p=\"${fileDirname}\"; p=\"${p//\\\\//}\"; cd \"$p\"; /ucrt64/bin/g++ -std=c++17 \"${fileBasename}\" -o \"${fileBasenameNoExtension}.exe\"",
+					"options": {
+						"shell": {
+							"executable": "C:\\msys64\\usr\\bin\\bash.exe",
+							"args": ["-lc"]
+						}
+					},
+					"isBackground": false,
+					"group": "build"
+				}
+				"p=\"${fileDirname}\"; p=\"${p//\\\\//}\"; cd \"$p\"; /ucrt64/bin/g++ -std=c++17 \"${fileBasename}\" -o \"${fileBasenameNoExtension}.exe\" > build.log 2>&1; echo $? > .build_exit"
+			],
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build current cpp (cd+abs g++)",
+			"type": "shell",
+			"command": "cd \"${fileDirname}\"; & C:\\msys64\\ucrt64\\bin\\g++.exe -std=c++17 \"${fileBasename}\" -o \"${fileBasenameNoExtension}.exe\"",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "build current cpp (bash ucrt64)",
+			"type": "shell",
+			"command": "C:\\msys64\\usr\\bin\\bash.exe",
+			"args": [
+				"-lc",
+				"p=\"${fileDirname}\"; p=\"${p//\\\\//}\"; cd \"$p\"; /ucrt64/bin/g++ -std=c++17 \"${fileBasename}\" -o \"${fileBasenameNoExtension}.exe\""
+			],
+			"isBackground": false,
+			"group": "build"
+		}
+	]
+}

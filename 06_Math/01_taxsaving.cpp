@@ -1,0 +1,5 @@
+// Problem: TAXSAVING (Math)
+// Summary: For T cases, print X - Y.
+
+#include <bits/stdc++.h>
+using namespace std; int main(){ ios::sync_with_stdio(false); cin.tie(nullptr); int T; if(!(cin>>T)) return 0; while(T--){ long long X,Y; cin>>X>>Y; cout<<(X-Y)<<"\n"; } }
